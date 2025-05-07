@@ -12,3 +12,7 @@ async def check_user(id: str = Query(..., description="User ID to check")):
         return "ok"
     else:
         raise HTTPException(status_code=403, detail="Unauthorized")
+
+@app.get("/")
+def root():
+    return {"message": "Lasavo backend is live"}
