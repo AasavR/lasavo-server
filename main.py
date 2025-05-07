@@ -6,12 +6,14 @@ app = FastAPI()
 # Example list of authorized user IDs
 authorized_users = {"demo1", "demo2", "demo3"}
 
+
 @app.get("/api/check_user")
-async def check_user(id: str = Query(..., description="User ID to check")):
-    if id in authorized_users:
-        return "ok"
+def check_user(id: str):
+    # Temporary mock response
+    if id == "demo1":
+        return {"status": "active"}
     else:
-        raise HTTPException(status_code=403, detail="Unauthorized")
+        return {"status": "inactive"}
 
 @app.get("/")
 def root():
